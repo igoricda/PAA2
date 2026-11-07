@@ -1,8 +1,9 @@
 # Grafos — Dijkstra × Bellman-Ford (Grupo 6)
 
 Implementação em C++17 no modelo clássico do Cormen (cap. 24),
-com `min-heap` binário no Dijkstra e teste de ciclo negativo no
-Bellman-Ford. Origem única `s = 0` para todos os grafos.
+com `std::priority_queue` (min-heap binário da biblioteca padrão)
+no Dijkstra e teste de ciclo negativo no Bellman-Ford.
+Origem única `s = 0` para todos os grafos.
 
 ## Estrutura
 
@@ -10,7 +11,6 @@ Bellman-Ford. Origem única `s = 0` para todos os grafos.
 | --- | --- |
 | `graph.h/.cpp` | `Graph` (matriz + lista de adjacência + lista de arcos) e `BuildGraph` |
 | `fileUtils.h/.cpp` | Leitura do formato de entrada (`N` + matriz `N×N`) |
-| `minHeap.h/.cpp` | Min-heap clássico (BUILD-MIN-HEAP, EXTRACT-MIN, DECREASE-KEY) |
 | `shortestPaths.h/.cpp` | INITIALIZE-SINGLE-SOURCE, RELAX, DIJKSTRA, BELLMAN-FORD, PRINT-PATH |
 | `dijkstra.cpp` | Programa individual (teste de um arquivo) |
 | `bellmanFord.cpp` | Programa individual (teste de um arquivo) |
