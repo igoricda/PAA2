@@ -45,9 +45,6 @@ Tamanhos: 10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 650,
 
 ## Notas
 
-- Benchmark no formato do LCS: `PrepareCsvOutput`/`LastSize` com
-  retomada por último tamanho, leitura fora da seção cronometrada,
-  6 execuções com a primeira descartada (média das 5 últimas).
 - Em empates de menor caminho, os vetores `pred` (e, portanto, os
   caminhos impressos) podem diferir entre os algoritmos; o critério
   de validação é a igualdade das distâncias (seção 6.2).
