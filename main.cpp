@@ -9,9 +9,9 @@
 #include "fileUtils.h"
 #include "shortestPaths.h"
 
-// Benchmark no mesmo formato do LCS: 6 execuções por tamanho/algoritmo,
+// Benchmark: 6 execuções por tamanho/algoritmo,
 // a primeira é descartada e a média é tomada sobre as últimas 5.
-// A leitura do grafo fica fora da seção cronometrada (como no LCS).
+// A leitura do grafo fica fora da seção cronometrada.
 // Origem única s = 0 para todos os grafos.
 int main()
 {

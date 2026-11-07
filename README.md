@@ -4,7 +4,7 @@ Implementação em C++17 no modelo clássico do Cormen (cap. 24),
 com `min-heap` binário no Dijkstra e teste de ciclo negativo no
 Bellman-Ford. Origem única `s = 0` para todos os grafos.
 
-## Estrutura (espelho do trabalho LCS)
+## Estrutura
 
 | Arquivo | Papel |
 | --- | --- |
@@ -12,9 +12,9 @@ Bellman-Ford. Origem única `s = 0` para todos os grafos.
 | `fileUtils.h/.cpp` | Leitura do formato de entrada (`N` + matriz `N×N`) |
 | `minHeap.h/.cpp` | Min-heap clássico (BUILD-MIN-HEAP, EXTRACT-MIN, DECREASE-KEY) |
 | `shortestPaths.h/.cpp` | INITIALIZE-SINGLE-SOURCE, RELAX, DIJKSTRA, BELLMAN-FORD, PRINT-PATH |
-| `dijkstra.cpp` | Programa individual (vide `pdlcs.cpp` no LCS) |
-| `bellmanFord.cpp` | Programa individual (vide `reclcs.cpp` no LCS) |
-| `main.cpp` | Benchmark no formato LCS (6 reps, média das últimas 5) |
+| `dijkstra.cpp` | Programa individual (teste de um arquivo) |
+| `bellmanFord.cpp` | Programa individual (teste de um arquivo) |
+| `main.cpp` | Benchmark (6 reps, média das últimas 5) |
 | `gerar_graficos.py` | Gera os PNGs a partir dos CSVs |
 | `resultadosDijkstra_grafos.csv` | Médias do Dijkstra (`n;tempo`) |
 | `resultadosBellmanFord_grafos.csv` | Médias do Bellman-Ford (`n;tempo`) |

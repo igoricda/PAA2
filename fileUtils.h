@@ -13,7 +13,7 @@
 
 #include "graph.h"
 
-// --- Utilidades de CSV (mesmo formato do LCS) ---
+// --- Utilidades de CSV ---
 
 std::optional<std::string> LastSize(const std::string& nomeCSV);
 
@@ -30,8 +30,7 @@ std::optional<std::size_t> PrepareCsvOutput(const std::string& csvPath,
 // de leitura, imprime mensagem em stderr e devolve um Grafo com n = 0.
 Graph ReadGraph(const std::string& fileName);
 
-// Sobrecarga no estilo de ReadFiles do trabalho LCS: lê a partir de um
-// std::ifstream já aberto. Devolve false em caso de falha.
+// Lê a partir de um std::ifstream já aberto. Devolve false em caso de falha.
 bool ReadGraphFile(std::ifstream& file, Graph& graph);
 
 #endif

@@ -2,7 +2,7 @@
 """Gera gráficos Tamanho vs Tempo a partir dos CSVs do benchmark.
 
 Lê resultadosDijkstra_grafos.csv e resultadosBellmanFord_grafos.csv
-(formato LCS: "Tamanho;Tempo_..._Segundos;" + linhas "n;tempo"),
+(formato "Tamanho;Tempo_..._Segundos;" + linhas "n;tempo"),
 e salva variantes em images/:
   - grafico_Dijkstra_vs_BellmanFord_linear.png : linhas, escala decimal
   - grafico_Dijkstra_vs_BellmanFord_log.png    : linhas, escala log (eixo y)
@@ -50,8 +50,8 @@ assert n_d == n_b, f"tamanhos divergem: {n_d} vs {n_b}"
 n = n_d
 print(f"pontos: {len(n)} | n={n}")
 
-COLOR_D = "#1f77b4"  # azul (como na referência PD)
-COLOR_B = "#d62728"  # vermelho (como na referência Rec)
+COLOR_D = "#1f77b4"  # azul
+COLOR_B = "#d62728"  # vermelho
 
 # --- 1. linhas, escala decimal ---
 fig, ax = plt.subplots(figsize=(9, 6))
@@ -62,7 +62,7 @@ fig.tight_layout()
 fig.savefig(OUT / "grafico_Dijkstra_vs_BellmanFord_linear.png", dpi=150)
 plt.close(fig)
 
-# --- 2. linhas, escala log (eixo y) — estilo da figura LCS ---
+# --- 2. linhas, escala log (eixo y) ---
 fig, ax = plt.subplots(figsize=(9, 6))
 ax.plot(n, t_d, marker="o", color=COLOR_D, label="Dijkstra (min-heap)")
 ax.plot(n, t_b, marker="o", color=COLOR_B, label="Bellman-Ford")
