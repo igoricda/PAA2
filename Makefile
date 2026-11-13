@@ -2,7 +2,7 @@
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -std=c++17 -O2
 
-FILES := shortestPaths.cpp graph.cpp fileUtils.cpp
+FILES := shortestPaths.cpp graph.cpp fileUtils.cpp minHeap.cpp
 
 # Default target
 all: main dijkstra bellmanFord

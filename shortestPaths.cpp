@@ -1,9 +1,9 @@
 #include "shortestPaths.h"
 
 #include <iostream>
-#include <queue>
-#include <utility>
 #include <vector>
+
+#include "minHeap.h"
 
 void InitializeSingleSource(const Graph& g, int s,
                             std::vector<int>& dist, std::vector<int>& pred)
@@ -42,39 +42,19 @@ PathResult Dijkstra(const Graph& g, int s)
 
     InitializeSingleSource(g, s, dist, pred);
 
-    // Q: min-heap da biblioteca padrão (heap binário sob o capô).
-    // std::priority_queue é max-heap, por isso o comparador greater<>
-    // inverte para min-heap ordenado por (dist, vértice).
-    // A std não oferece DECREASE-KEY: simula-se com inserções preguiçosas
-    // (lazy). Cada relaxamento empurra uma nova entrada; entradas
-    // desatualizadas (já em S ou com chave != dist[u]) são ignoradas.
-    using Node = std::pair<int, int>;  // (dist, vértice)
-    std::priority_queue<Node,
-                        std::vector<Node>,
-                        std::greater<Node>> q;
-
-    if (s >= 0 && s < g.n) {
-        q.push({0, s});
-    }
+    // Q: min-heap binário clássico (Cormen cap. 6), com todas as chaves
+    // iniciais (BUILD-MIN-HEAP) e DECREASE-KEY real no relaxamento.
+    MinPriorityQueue q(g.n, dist);
 
     std::vector<char> inS(g.n, 0);
 
-    while (!q.empty()) {
-        auto [d, u] = q.top();  // EXTRACT-MIN(Q)
-        q.pop();
-
-        if (inS[u]) {
-            continue;  // entrada duplicada
-        }
-        if (d != dist[u]) {
-            continue;  // chave desatualizada
-        }
-
-        inS[u] = 1;  // S <- S ∪ {u}
+    while (!q.Empty()) {
+        auto [d, u] = q.ExtractMin();  // EXTRACT-MIN(Q)
+        inS[u] = 1;                    // S <- S ∪ {u}
 
         for (auto [v, w] : g.adj[u]) {
-            if (!inS[v] && Relax(u, v, w, dist, pred)) {
-                q.push({dist[v], v});  // DECREASE-KEY preguiçoso
+            if (Relax(u, v, w, dist, pred)) {
+                q.DecreaseKey(v, dist[v]);  // DECREASE-KEY(Q, v, dist[v])
             }
         }
     }
@@ -94,7 +74,7 @@ PathResult BellmanFord(const Graph& g, int s)
 
     InitializeSingleSource(g, s, dist, pred);
 
-    // |-V| - 1 rodadas de relaxamento (sem early-exit: custo clássico).
+    // |V| - 1 rodadas de relaxamento (sem early-exit: custo clássico).
     for (int i = 0; i < g.n - 1; ++i) {
         for (const Edge& e : g.edges) {
             Relax(e.u, e.v, e.weight, dist, pred);
@@ -178,6 +158,6 @@ bool EqualDistances(const std::vector<int>& a, const std::vector<int>& b)
  * BellmanFord   = g, s, dist, pred, i, (u, v, w) (7)
  * Relax         = u, v, w, dist, pred (5)
  * Initialize..  = g, s, dist, pred (4)
- * Q             = std::priority_queue (min-heap binário da stdlib,
- *                 com DECREASE-KEY preguiçoso via reinserção)
+ * Q             = MinPriorityQueue (min-heap com DECREASE-KEY),
+ *                 ver minHeap.h/.cpp
  */

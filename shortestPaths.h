@@ -24,11 +24,10 @@ void InitializeSingleSource(const Graph& g, int s,
 bool Relax(int u, int v, int w,
            std::vector<int>& dist, std::vector<int>& pred);
 
-// DIJKSTRA(G, w, s) clássico (Cormen cap. 24) com min-heap binário da
-// biblioteca padrão (std::priority_queue com greater), com DECREASE-KEY
-// preguiçoso (a std não expõe decrease-key). Pressupõe pesos não
-// negativos (verificado nas entradas). O vetor pred representa a
-// árvore de caminhos mais curtos (predecessores).
+// DIJKSTRA(G, w, s) clássico (Cormen cap. 24) com min-heap binário
+// (MinPriorityQueue, ver minHeap.h) e DECREASE-KEY real.
+// Pressupõe pesos não negativos (verificado nas entradas). O vetor
+// pred representa a árvore de caminhos mais curtos (predecessores).
 PathResult Dijkstra(const Graph& g, int s);
 
 // BELLMAN-FORD(G, w, s) clássico (Cormen cap. 24): faz |V| - 1 rodadas de
