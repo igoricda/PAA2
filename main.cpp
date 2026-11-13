@@ -9,10 +9,7 @@
 #include "fileUtils.h"
 #include "shortestPaths.h"
 
-// Benchmark: 6 execuções por tamanho/algoritmo,
-// a primeira é descartada e a média é tomada sobre as últimas 5.
-// A leitura do grafo fica fora da seção cronometrada.
-// Origem única s = 0 para todos os grafos.
+
 int main()
 {
     std::string filePrefix = "./input/Entrada ";

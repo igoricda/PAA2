@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    int s = 0;  // origem: vértice 0 (Cormen: s ∈ V)
+    int s = 0;  // origem: vértice 0 
 
     std::cout << "Arquivo: " << fileName << '\n';
     std::cout << "Vértices: " << graph.n

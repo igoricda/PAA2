@@ -10,7 +10,7 @@ MinPriorityQueue::MinPriorityQueue(int n, const std::vector<int>& dist)
         heap_.push_back({dist[v], v});
     }
 
-    // BUILD-MIN-HEAP da biblioteca padrão (O(n)).
+    // BUILD-MIN-HEAP da stdlib (O(n)).
     std::make_heap(heap_.begin(), heap_.end(), greater_);
 
     // O make_heap reordena o vetor: o mapa de posições é montado depois.
